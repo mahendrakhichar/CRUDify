@@ -27,6 +27,11 @@ mongoose.connection.on('error', (err)=>{
     console.log(`error occurred `, err);
 })
 
+app.get('/', async(req,res)=>{
+    const people = await person.find();
+    res.render('personTable', { people });
+});
+
 // get person list
 app.get('/person', async (req, res) => {
     const people = await person.find();
@@ -78,7 +83,7 @@ app.get('/person/delete/:id', async(req,res)=>{
 })
 app.post('/person/delete/:id', async(req,res)=>{
     await person.findByIdAndDelete(req.params.id);
-    res.redirect('/person');
+    res.redirect('/');
 })
 
 // startign the server 
