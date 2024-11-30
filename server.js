@@ -2,14 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+require('dotenv').config();
 
 // middleware and view engine 
 app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-mongoose.connect("mongodb://127.0.0.1:27017/customer");
-
+mongoose.connect(process.env.MONGODB_URI);
 
 const userSchema = new mongoose.Schema({
     name: String,
