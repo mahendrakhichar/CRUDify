@@ -27,10 +27,6 @@ mongoose.connection.on('error', (err)=>{
     console.log(`error occurred `, err);
 })
 
-app.get('/', (req,res)=>{
-    res.send("ok");
-});
-
 // get person list
 app.get('/person', async (req, res) => {
     const people = await person.find();
