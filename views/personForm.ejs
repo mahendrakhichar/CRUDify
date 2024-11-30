@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= p._id ? 'Edit' : 'Create' %> Person</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div class="w-3/4 max-w-md bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+            <%= p._id ? 'Edit' : 'Create' %> Person
+        </h1>
+        <form method="POST" action="<%= action %>" class="space-y-4">
+            <div>
+                <label class="block text-sm font-bold text-gray-700">Name:</label>
+                <input type="text" name="name" value="<%= p.name || '' %>" 
+                       class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700">Age:</label>
+                <input type="number" name="age" value="<%= p.age || '' %>" 
+                       class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700">Gender:</label>
+                <input type="text" name="gender" value="<%= p.gender || '' %>" 
+                       class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-gray-700">Mobile:</label>
+                <input type="number" name="mobile" value="<%= p.mobile || '' %>" 
+                       class="w-full border rounded px-3 py-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded">
+                <%= p._id ? 'Update' : 'Submit' %>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People List</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+    <div class="w-3/4 bg-white shadow-md rounded-lg p-6">
+        <!-- Header Section -->
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold text-gray-800">People List</h1>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+                onclick="window.location.href='/person/create';">+ Add Person</button>
+        </div>
+
+        <!-- Table Section -->
+        <table class="table-auto w-full border-collapse border border-gray-300 text-sm">
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="border border-gray-300 px-4 py-2">Name</th>
+                    <th class="border border-gray-300 px-4 py-2">Age</th>
+                    <th class="border border-gray-300 px-4 py-2">Gender</th>
+                    <th class="border border-gray-300 px-4 py-2">Mobile</th>
+                    <th class="border border-gray-300 px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% people.forEach(person => { %>
+                <tr class="text-center hover:bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2"><%= person.name %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= person.age %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= person.gender %></td>
+                    <td class="border border-gray-300 px-4 py-2"><%= person.mobile %></td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <button class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600" 
+                            onclick="window.location.href='/person/edit/<%= person._id%>';">Edit</button>
+                        <button class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600" 
+                            onclick="window.location.href='/person/delete/<%= person._id%>';">Delete</button>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
