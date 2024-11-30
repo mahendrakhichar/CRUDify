@@ -28,8 +28,7 @@ mongoose.connection.on('error', (err)=>{
 })
 
 app.get('/', async(req,res)=>{
-    const people = await person.find();
-    res.render('personTable', { people });
+    res.redirect('/person');
 });
 
 // get person list
@@ -38,21 +37,6 @@ app.get('/person', async (req, res) => {
     res.render('personTable', { people });
 });
 
-
-// Insert sample data if database is empty
-// app.get('/add-sample', async (req, res) => {
-//     const count = await person.countDocuments();
-//     if (count === 0) {
-//         await person.create({
-//             name: 'John Doe',
-//             age: 30,
-//             gender: 'Male',
-//             mobile: '1234567890'
-//         });
-//         console.log("Sample data added.");
-//     }
-//     res.redirect('/person'); // Redirect to see the table
-// });
 
 // create a form to create a person
 app.get('/person/create', (req,res)=>{
